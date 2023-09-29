@@ -1,0 +1,42 @@
+#include <stdio.h>
+#include <string.h>
+#include <stdlib.h>
+
+int calc(int x, int y) {
+  return x*y;
+}
+
+char *gretting_message(char*, char*);
+char *gretting_message_fp(char*, char*, int(*)(int,int));
+
+typedef struct {
+  int legs;
+  int eyes;
+  char *name;
+} animal;
+
+int main(int argc, char *argv[]) {
+  int (*fp)(int,int) = &calc;
+  printf("%d\n", fp(5,5));
+
+  animal dog;
+  dog.name = argv[1];
+
+  char *addr = (char *) malloc(64); // Could change this
+  char *message = gretting_message(dog.name, addr);
+
+  printf("%s\n", message);
+  free(addr);
+
+  return 0;
+}
+
+// name = username
+// addr = memory address from malloc
+char *gretting_message(char *name, char *addr) {
+  strcat(addr, "Hello, ");
+  strncat(addr, name, 21);
+  strcat(addr, "!");
+
+  return addr;
+}
