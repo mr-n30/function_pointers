@@ -14,6 +14,15 @@ Learning function pointers
 - To use the function stored inside of "*fp* we just do this: fp(5,10);
 - Hope this helps understand function pointers
 
+# Install
+This code is just for learning purposes and contains a buffer overflow vulnerablity. Can you fix it?
+```
+git clone https://github.com/mr-n30/function_pointers.git
+cd function_pointers
+make
+./a.out "John Wick"
+```
+
 # Code below
 ```c
 #include <stdio.h>
